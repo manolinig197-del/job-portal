@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Find Jobs | JobConnect</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+    <style>
+
+        /* =================================================
+           JOBS PAGE
+        ================================================= */
+
+        .jobs-page {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+
+        /* =================================================
+           JOBS HERO
+        ================================================= */
+
+        .jobs-hero {
+            padding: 65px 7% 80px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(147, 197, 253, 0.35),
+                    transparent 30%
+                ),
+                #eff6ff;
+        }
+
+        .jobs-hero-content {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .jobs-hero h1 {
+            margin-bottom: 10px;
+
+            color: #111827;
+
+            font-size: 42px;
+            line-height: 1.15;
+        }
+
+        .jobs-hero h1 span {
+            color: #2563eb;
+        }
+
+        .jobs-hero p {
+            max-width: 650px;
+
+            margin-bottom: 30px;
+
+            color: #64748b;
+
+            font-size: 15px;
+        }
+
+
+        /* =================================================
+           SEARCH BAR
+        ================================================= */
+
+        .jobs-search-box {
+            padding: 8px;
+
+            display: flex;
+            align-items: center;
+
+            max-width: 1000px;
+
+            background: #ffffff;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 15px 35px rgba(
+                    30,
+                    64,
+                    175,
+                    0.10
+                );
+        }
+
+        .jobs-search-field {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 5px 15px;
+        }
+
+        .jobs-search-field + .jobs-search-field {
+            border-left: 1px solid #e5e7eb;
+        }
+
+        .jobs-search-field input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            color: #111827;
+
+            font-size: 14px;
+        }
+
+        .jobs-search-field input::placeholder {
+            color: #94a3b8;
+        }
+
+        .jobs-search-button {
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .jobs-search-button:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =================================================
+           CONTENT
+        ================================================= */
+
+        .jobs-content {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 60px 0 90px;
+
+            display: grid;
+
+            grid-template-columns: 250px 1fr;
+
+            gap: 30px;
+        }
+
+
+        /* =================================================
+           FILTERS
+        ================================================= */
+
+        .filters-card {
+            align-self: start;
+
+            padding: 23px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            position: sticky;
+
+            top: 95px;
+        }
+
+        .filters-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 22px;
+        }
+
+        .filters-header h3 {
+            color: #111827;
+
+            font-size: 16px;
+        }
+
+        .clear-filters {
+            border: none;
+
+            background: transparent;
+
+            color: #2563eb;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #374151;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .filter-group select {
+            width: 100%;
+
+            padding: 10px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            color: #475569;
+
+            background: #ffffff;
+
+            font-size: 12px;
+        }
+
+        .filter-group select:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* =================================================
+           JOB RESULTS
+        ================================================= */
+
+        .jobs-results-header {
+            margin-bottom: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .jobs-results-header h2 {
+            color: #111827;
+
+            font-size: 22px;
+        }
+
+        .results-count {
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        .sort-select {
+            padding: 8px 11px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background: #ffffff;
+
+            color: #475569;
+
+            font-size: 11px;
+        }
+
+
+        /* =================================================
+           JOB GRID
+        ================================================= */
+
+        .all-jobs-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+
+        /* =================================================
+           EMPTY STATE
+        ================================================= */
+
+        .jobs-empty {
+            grid-column: 1 / -1;
+
+            min-height: 300px;
+
+            padding: 40px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+        .jobs-empty-icon {
+            margin-bottom: 15px;
+
+            font-size: 45px;
+        }
+
+        .jobs-empty h3 {
+            margin-bottom: 6px;
+
+            color: #111827;
+
+            font-size: 18px;
+        }
+
+        .jobs-empty p {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           LOADING
+        ================================================= */
+
+        .jobs-loading {
+            grid-column: 1 / -1;
+
+            min-height: 300px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 15px;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 900px) {
+
+            .jobs-content {
+                grid-template-columns: 1fr;
+
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .filters-card {
+                position: static;
+            }
+
+            .all-jobs-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .jobs-hero {
+                padding: 50px 5px 60px;
+            }
+
+            .jobs-hero h1 {
+                font-size: 34px;
+            }
+
+            .jobs-search-box {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .jobs-search-field {
+                min-height: 48px;
+            }
+
+            .jobs-search-field + .jobs-search-field {
+                border-left: none;
+
+                border-top: 1px solid #e5e7eb;
+            }
+
+            .jobs-search-button {
+                width: 100%;
+            }
+
+            .jobs-results-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Job<span>Connect</span>
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="jobs.html"
+               class="active">
+                Jobs
+            </a>
+
+            <a href="index.html#categories">
+                Categories
+            </a>
+
+            <a href="index.html#howItWorks">
+                How It Works
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button
+                class="btn btn-outline"
+                id="loginBtn">
+
+                Login
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                id="registerBtn">
+
+                Register
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="jobs-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="jobs-hero">
+
+            <div class="jobs-hero-content">
+
+                <p class="section-tag">
+                    EXPLORE OPPORTUNITIES
+                </p>
+
+                <h1>
+                    Find your next
+                    <span>opportunity.</span>
+                </h1>
+
+                <p>
+                    Search through available jobs and find
+                    an opportunity that matches your skills,
+                    experience and location.
+                </p>
+
+
+                <!-- SEARCH -->
+
+                <div class="jobs-search-box">
+
+
+                    <div class="jobs-search-field">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="jobsSearchInput"
+                            placeholder="Job title, company or skill">
+
+                    </div>
+
+
+                    <div class="jobs-search-field">
+
+                        <span>
+                            📍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="jobsLocationInput"
+                            placeholder="Location">
+
+                    </div>
+
+
+                    <button
+                        class="jobs-search-button"
+                        id="jobsSearchButton">
+
+                        Search Jobs
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             JOB CONTENT
+        ================================================== -->
+
+        <section class="jobs-content">
+
+
+            <!-- FILTERS -->
+
+            <aside class="filters-card">
+
+
+                <div class="filters-header">
+
+                    <h3>
+                        Filters
+                    </h3>
+
+                    <button
+                        class="clear-filters"
+                        id="clearFilters">
+
+                        Clear All
+
+                    </button>
+
+                </div>
+
+
+                <!-- EXPERIENCE -->
+
+                <div class="filter-group">
+
+                    <label for="experienceFilter">
+                        Experience
+                    </label>
+
+                    <select
+                        id="experienceFilter">
+
+                        <option value="">
+                            Any Experience
+                        </option>
+
+                        <option value="0-2">
+                            0-2 Years
+                        </option>
+
+                        <option value="1-3">
+                            1-3 Years
+                        </option>
+
+                        <option value="3-5">
+                            3-5 Years
+                        </option>
+
+                        <option value="5+">
+                            5+ Years
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="filter-group">
+
+                    <label for="locationFilter">
+                        Location
+                    </label>
+
+                    <select
+                        id="locationFilter">
+
+                        <option value="">
+                            All Locations
+                        </option>
+
+                        <option value="Hyderabad">
+                            Hyderabad
+                        </option>
+
+                        <option value="Bangalore">
+                            Bangalore
+                        </option>
+
+                        <option value="Pune">
+                            Pune
+                        </option>
+
+                        <option value="Chennai">
+                            Chennai
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SALARY -->
+
+                <div class="filter-group">
+
+                    <label for="salaryFilter">
+                        Salary
+                    </label>
+
+                    <select
+                        id="salaryFilter">
+
+                        <option value="">
+                            Any Salary
+                        </option>
+
+                        <option value="5">
+                            5+ LPA
+                        </option>
+
+                        <option value="8">
+                            8+ LPA
+                        </option>
+
+                        <option value="10">
+                            10+ LPA
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- JOB TYPE -->
+
+                <div class="filter-group">
+
+                    <label for="jobTypeFilter">
+                        Job Type
+                    </label>
+
+                    <select
+                        id="jobTypeFilter">
+
+                        <option value="">
+                            All Types
+                        </option>
+
+                        <option value="Full Time">
+                            Full Time
+                        </option>
+
+                        <option value="Internship">
+                            Internship
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </aside>
+
+
+            <!-- RESULTS -->
+
+            <div class="jobs-results">
+
+
+                <div class="jobs-results-header">
+
+                    <div>
+
+                        <h2>
+                            Available Jobs
+                        </h2>
+
+                        <span
+                            id="resultsCount"
+                            class="results-count">
+
+                            Loading jobs...
+
+                        </span>
+
+                    </div>
+
+
+                    <select
+                        id="sortJobs"
+                        class="sort-select">
+
+                        <option value="latest">
+                            Latest
+                        </option>
+
+                        <option value="oldest">
+                            Oldest
+                        </option>
+
+                        <option value="salary">
+                            Salary
+                        </option>
+
+                        <option value="title">
+                            Job Title
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- JOBS -->
+
+                <div
+                    id="allJobsContainer"
+                    class="all-jobs-grid">
+
+                    <div class="jobs-loading">
+
+                        <div class="loader"></div>
+
+                        <p>
+                            Loading jobs...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script
+        type="module"
+        src="../js/jobs.js">
+    </script>
+
+</body>
+
+</html>

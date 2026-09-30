@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Applicants | JobConnect</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+
+    <style>
+
+        /* =================================================
+           APPLICANTS PAGE
+        ================================================= */
+
+        .applicants-page {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .applicants-navbar {
+            height: 70px;
+
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e5e7eb;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .applicants-logo {
+            color: #111827;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+
+        .applicants-logo span {
+            color: #2563eb;
+        }
+
+
+        .back-dashboard-btn {
+            padding: 9px 14px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #475569;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .back-dashboard-btn:hover {
+            background: #f8fafc;
+        }
+
+
+        /* =================================================
+           CONTENT
+        ================================================= */
+
+        .applicants-content {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 45px 0 80px;
+        }
+
+
+        /* =================================================
+           HEADING
+        ================================================= */
+
+        .applicants-heading {
+            margin-bottom: 25px;
+        }
+
+
+        .applicants-heading h1 {
+            margin-bottom: 7px;
+
+            color: #111827;
+
+            font-size: 30px;
+        }
+
+
+        .applicants-heading p {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           JOB SUMMARY
+        ================================================= */
+
+        .job-summary-card {
+            margin-bottom: 25px;
+
+            padding: 22px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+
+        .job-summary-logo {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 12px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+
+        .job-summary-info {
+            flex: 1;
+        }
+
+
+        .job-summary-info h2 {
+            margin-bottom: 5px;
+
+            color: #111827;
+
+            font-size: 18px;
+        }
+
+
+        .job-summary-info p {
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        .applicant-count {
+            padding: 8px 12px;
+
+            border-radius: 20px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+        /* =================================================
+           FILTER BAR
+        ================================================= */
+
+        .applicants-toolbar {
+            margin-bottom: 18px;
+
+            padding: 15px 18px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 10px;
+        }
+
+
+        .applicant-search {
+            flex: 1;
+
+            max-width: 350px;
+
+            padding: 10px 12px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            color: #334155;
+
+            font-size: 12px;
+        }
+
+
+        .applicant-search:focus {
+            border-color: #2563eb;
+        }
+
+
+        .status-filter {
+            padding: 10px 12px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background: #ffffff;
+
+            color: #475569;
+
+            font-size: 12px;
+        }
+
+
+        /* =================================================
+           APPLICANTS CARD
+        ================================================= */
+
+        .applicants-list-card {
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+        }
+
+
+        /* =================================================
+           TABLE
+        ================================================= */
+
+        .applicants-table-wrapper {
+            overflow-x: auto;
+        }
+
+
+        .applicants-table {
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+
+        .applicants-table th {
+            padding: 14px 16px;
+
+            background: #f8fafc;
+
+            color: #64748b;
+
+            text-align: left;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+        }
+
+
+        .applicants-table td {
+            padding: 17px 16px;
+
+            border-bottom: 1px solid #eef2f7;
+
+            color: #475569;
+
+            font-size: 12px;
+
+            white-space: nowrap;
+        }
+
+
+        .applicants-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+
+        /* =================================================
+           CANDIDATE
+        ================================================= */
+
+        .candidate-cell {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .candidate-avatar {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .candidate-name {
+            margin-bottom: 3px;
+
+            color: #111827;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .candidate-email {
+            color: #94a3b8;
+
+            font-size: 10px;
+        }
+
+
+        /* =================================================
+           RESUME
+        ================================================= */
+
+        .resume-name {
+            color: #2563eb;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        /* =================================================
+           STATUS SELECT
+        ================================================= */
+
+        .status-select {
+            padding: 7px 9px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 6px;
+
+            outline: none;
+
+            background: #ffffff;
+
+            color: #475569;
+
+            font-size: 10px;
+        }
+
+
+        .status-select:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* =================================================
+           UPDATE BUTTON
+        ================================================= */
+
+        .update-status-btn {
+            padding: 7px 11px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .update-status-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        .update-status-btn:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+        }
+
+
+        /* =================================================
+           STATUS BADGES
+        ================================================= */
+
+        .status-badge {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+
+        .status-applied {
+            background: #eff6ff;
+
+            color: #2563eb;
+        }
+
+
+        .status-review {
+            background: #fff7ed;
+
+            color: #ea580c;
+        }
+
+
+        .status-shortlisted {
+            background: #fefce8;
+
+            color: #ca8a04;
+        }
+
+
+        .status-interview {
+            background: #f5f3ff;
+
+            color: #7c3aed;
+        }
+
+
+        .status-selected {
+            background: #f0fdf4;
+
+            color: #16a34a;
+        }
+
+
+        .status-rejected {
+            background: #fef2f2;
+
+            color: #dc2626;
+        }
+
+
+        /* =================================================
+           EMPTY
+        ================================================= */
+
+        .applicants-empty {
+            padding: 70px 20px;
+
+            text-align: center;
+        }
+
+
+        .applicants-empty-icon {
+            margin-bottom: 15px;
+
+            font-size: 45px;
+        }
+
+
+        .applicants-empty h3 {
+            margin-bottom: 7px;
+
+            color: #111827;
+
+            font-size: 18px;
+        }
+
+
+        .applicants-empty p {
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        /* =================================================
+           LOADING
+        ================================================= */
+
+        .applicants-loading {
+            padding: 70px;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+            .applicants-content {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+
+            .applicants-toolbar {
+                align-items: stretch;
+
+                flex-direction: column;
+            }
+
+
+            .applicant-search {
+                max-width: none;
+            }
+
+
+            .job-summary-card {
+                align-items: flex-start;
+
+                flex-wrap: wrap;
+            }
+
+
+            .applicant-count {
+                margin-left: 73px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="applicants-page">
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="applicants-navbar">
+
+
+        <div class="applicants-logo">
+
+            Job<span>Connect</span>
+
+        </div>
+
+
+        <button
+            id="backDashboardBtn"
+            class="back-dashboard-btn">
+
+            ← Recruiter Dashboard
+
+        </button>
+
+
+    </header>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="applicants-content">
+
+
+        <!-- HEADING -->
+
+        <section class="applicants-heading">
+
+            <h1>
+                Applicants
+            </h1>
+
+            <p>
+                Review candidates and manage
+                their application status.
+            </p>
+
+        </section>
+
+
+        <!-- =================================================
+             JOB SUMMARY
+        ================================================== -->
+
+        <section
+            id="jobSummary"
+            class="job-summary-card">
+
+
+            <div
+                id="jobSummaryLogo"
+                class="job-summary-logo">
+
+                J
+
+            </div>
+
+
+            <div class="job-summary-info">
+
+                <h2 id="jobSummaryTitle">
+                    Loading job...
+                </h2>
+
+                <p id="jobSummaryCompany">
+                    Loading company...
+                </p>
+
+            </div>
+
+
+            <span
+                id="applicantCount"
+                class="applicant-count">
+
+                0 Applicants
+
+            </span>
+
+
+        </section>
+
+
+        <!-- =================================================
+             TOOLBAR
+        ================================================== -->
+
+        <section
+            class="applicants-toolbar">
+
+
+            <input
+                type="text"
+                id="applicantSearch"
+                class="applicant-search"
+                placeholder="Search candidate name or email...">
+
+
+            <select
+                id="statusFilter"
+                class="status-filter">
+
+                <option value="">
+                    All Statuses
+                </option>
+
+                <option value="Applied">
+                    Applied
+                </option>
+
+                <option value="Under Review">
+                    Under Review
+                </option>
+
+                <option value="Shortlisted">
+                    Shortlisted
+                </option>
+
+                <option value="Interview">
+                    Interview
+                </option>
+
+                <option value="Selected">
+                    Selected
+                </option>
+
+                <option value="Rejected">
+                    Rejected
+                </option>
+
+            </select>
+
+
+        </section>
+
+
+        <!-- =================================================
+             APPLICANTS
+        ================================================== -->
+
+        <section
+            class="applicants-list-card">
+
+
+            <div
+                id="applicantsContainer">
+
+                <div class="applicants-loading">
+
+                    Loading applicants...
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- AXIOS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+</script>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script
+    type="module"
+    src="../js/applicants.js">
+</script>
+
+
+</body>
+
+</html>

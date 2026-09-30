@@ -1,0 +1,179 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin Recruiter",
+      "email": "recruiter@gmail.com",
+      "password": "123456",
+      "role": "recruiter"
+    },
+    {
+      "id": "2",
+      "name": "Manu",
+      "email": "candidate@gmail.com",
+      "password": "123456",
+      "role": "candidate"
+    },
+    {
+      "id": "3",
+      "name": "Priya Sharma",
+      "email": "priya@gmail.com",
+      "password": "123456",
+      "role": "candidate"
+    },
+    {
+      "id": "4",
+      "name": "Rahul Kumar",
+      "email": "rahul@gmail.com",
+      "password": "123456",
+      "role": "candidate"
+    },
+    {
+      "name": "Manolini Gali",
+      "email": "manolinig197@gmail.com",
+      "password": "123456",
+      "role": "candidate",
+      "id": "zycurWKnhTc"
+    },
+    {
+      "name": "manu",
+      "email": "gmani@gmail.com",
+      "password": "123098",
+      "role": "candidate",
+      "id": "GnAwsgnw1iE"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1",
+      "title": "Frontend Developer",
+      "company": "TechNova Solutions",
+      "location": "Hyderabad",
+      "salary": "6-10 LPA",
+      "experience": "0-2 Years",
+      "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React"
+      ],
+      "description": "We are looking for a passionate Frontend Developer to build responsive and user-friendly web applications.",
+      "postedDate": "2026-09-25"
+    },
+    {
+      "id": "2",
+      "title": "Java Developer",
+      "company": "Infosys Technologies",
+      "location": "Bangalore",
+      "salary": "5-9 LPA",
+      "experience": "0-2 Years",
+      "skills": [
+        "Java",
+        "Spring Boot",
+        "SQL",
+        "Git"
+      ],
+      "description": "Join our development team and work on scalable enterprise applications using Java and Spring Boot.",
+      "postedDate": "2026-09-26"
+    },
+    {
+      "id": "3",
+      "title": "Python Developer",
+      "company": "DataWorks",
+      "location": "Pune",
+      "salary": "7-12 LPA",
+      "experience": "1-3 Years",
+      "skills": [
+        "Python",
+        "Django",
+        "REST API",
+        "SQL"
+      ],
+      "description": "Looking for a Python Developer interested in developing reliable and scalable backend applications.",
+      "postedDate": "2026-09-27"
+    },
+    {
+      "id": "4",
+      "title": "MERN Stack Developer",
+      "company": "WebSphere Labs",
+      "location": "Chennai",
+      "salary": "6-11 LPA",
+      "experience": "0-2 Years",
+      "skills": [
+        "MongoDB",
+        "Express",
+        "React",
+        "Node.js"
+      ],
+      "description": "Work with our team to build modern full-stack web applications using the MERN stack.",
+      "postedDate": "2026-09-28"
+    },
+    {
+      "id": "5",
+      "title": "Software Engineer",
+      "company": "CloudTech Systems",
+      "location": "Hyderabad",
+      "salary": "8-14 LPA",
+      "experience": "1-3 Years",
+      "skills": [
+        "Java",
+        "Python",
+        "DSA",
+        "SQL"
+      ],
+      "description": "Develop software solutions and collaborate with engineering teams to solve real-world technical problems.",
+      "postedDate": "2026-09-29"
+    }
+  ],
+  "applications": [
+    {
+      "id": "1",
+      "jobId": "1",
+      "userId": "2",
+      "resume": "manu-resume.pdf",
+      "status": "Applied",
+      "appliedDate": "2026-09-28"
+    },
+    {
+      "id": "2",
+      "jobId": "2",
+      "userId": "3",
+      "resume": "priya-resume.pdf",
+      "status": "Under Review",
+      "appliedDate": "2026-09-28"
+    },
+    {
+      "id": "3",
+      "jobId": "4",
+      "userId": "4",
+      "resume": "rahul-resume.pdf",
+      "status": "Shortlisted",
+      "appliedDate": "2026-09-29"
+    },
+    {
+      "jobId": "3",
+      "userId": "2",
+      "resume": "resume-not-uploaded.pdf",
+      "status": "Interview",
+      "appliedDate": "2026-09-30",
+      "id": "Sk9-MXgtbs4"
+    },
+    {
+      "jobId": "2",
+      "userId": "zycurWKnhTc",
+      "resume": "resume-not-uploaded.pdf",
+      "status": "Rejected",
+      "appliedDate": "2026-09-30",
+      "id": "Su7bXUdvkfY"
+    },
+    {
+      "jobId": "2",
+      "userId": "GnAwsgnw1iE",
+      "resume": "resume-not-uploaded.pdf",
+      "status": "Applied",
+      "appliedDate": "2026-09-30",
+      "id": "BapSZw1aFeo"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

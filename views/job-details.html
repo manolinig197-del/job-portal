@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Job Details | JobConnect</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+    <style>
+
+        /* ==============================================
+           JOB DETAILS PAGE
+        ============================================== */
+
+        .job-details-page {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+
+        /* ==============================================
+           TOP BAR
+        ============================================== */
+
+        .job-details-top {
+            padding: 30px 7%;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .back-jobs-btn {
+            border: none;
+
+            background: transparent;
+
+            color: #2563eb;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        /* ==============================================
+           JOB HEADER
+        ============================================== */
+
+        .job-details-header {
+            padding: 55px 7%;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(147, 197, 253, 0.35),
+                    transparent 30%
+                ),
+                #eff6ff;
+        }
+
+        .job-details-header-inner {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+        }
+
+
+        .large-company-logo {
+            width: 80px;
+            height: 80px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 32px;
+            font-weight: 800;
+
+            box-shadow:
+                0 10px 25px
+                rgba(37, 99, 235, 0.25);
+        }
+
+
+        .job-header-info {
+            flex: 1;
+        }
+
+        .job-header-info h1 {
+            margin-bottom: 7px;
+
+            color: #111827;
+
+            font-size: 34px;
+        }
+
+        .job-company {
+            margin-bottom: 15px;
+
+            color: #475569;
+
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+
+        .job-header-meta {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 18px;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* ==============================================
+           MAIN CONTENT
+        ============================================== */
+
+        .job-details-content {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 50px 0 90px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 320px;
+
+            gap: 30px;
+        }
+
+
+        /* ==============================================
+           DESCRIPTION CARD
+        ============================================== */
+
+        .job-description-card {
+            padding: 30px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+        .details-section {
+            margin-bottom: 35px;
+        }
+
+        .details-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .details-section h2 {
+            margin-bottom: 15px;
+
+            color: #111827;
+
+            font-size: 20px;
+        }
+
+        .details-section p {
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ==============================================
+           SKILLS
+        ============================================== */
+
+        .skills-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+        }
+
+        .skill-tag {
+            padding: 8px 13px;
+
+            border-radius: 6px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        /* ==============================================
+           SIDE CARD
+        ============================================== */
+
+        .job-apply-card {
+            align-self: start;
+
+            padding: 25px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            position: sticky;
+
+            top: 95px;
+        }
+
+        .job-apply-card h3 {
+            margin-bottom: 20px;
+
+            color: #111827;
+
+            font-size: 18px;
+        }
+
+
+        .job-info-item {
+            padding: 14px 0;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            border-bottom: 1px solid #eef2f7;
+        }
+
+        .job-info-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .job-info-label {
+            color: #94a3b8;
+
+            font-size: 11px;
+        }
+
+        .job-info-value {
+            color: #334155;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            text-align: right;
+        }
+
+
+        /* ==============================================
+           APPLY BUTTON
+        ============================================== */
+
+        .apply-now-btn {
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .apply-now-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* ==============================================
+           LOGIN MESSAGE
+        ============================================== */
+
+        .login-message {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            background: #fff7ed;
+
+            color: #c2410c;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ==============================================
+           LOADING
+        ============================================== */
+
+        .details-loading {
+            min-height: 500px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+            color: #64748b;
+        }
+
+
+        /* ==============================================
+           ERROR
+        ============================================== */
+
+        .details-error {
+            max-width: 700px;
+
+            margin: 80px auto;
+
+            padding: 50px;
+
+            text-align: center;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+        .details-error h2 {
+            margin-bottom: 10px;
+
+            color: #111827;
+        }
+
+        .details-error p {
+            margin-bottom: 20px;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* ==============================================
+           RESPONSIVE
+        ============================================== */
+
+        @media (max-width: 850px) {
+
+            .job-details-content {
+                grid-template-columns: 1fr;
+
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .job-apply-card {
+                position: static;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .job-details-header-inner {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .job-details-header {
+                padding: 40px 5%;
+            }
+
+            .job-header-info h1 {
+                font-size: 28px;
+            }
+
+            .job-description-card {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="job-details-page">
+
+
+        <!-- ============================================
+             TOP BAR
+        ============================================= -->
+
+        <div class="job-details-top">
+
+            <button
+                class="back-jobs-btn"
+                id="backJobsBtn">
+
+                ← Back to Jobs
+
+            </button>
+
+        </div>
+
+
+        <!-- ============================================
+             LOADING
+        ============================================= -->
+
+        <div
+            id="detailsLoading"
+            class="details-loading">
+
+            <div class="loader"></div>
+
+            <p>
+                Loading job details...
+            </p>
+
+        </div>
+
+
+        <!-- ============================================
+             JOB DETAILS
+        ============================================= -->
+
+        <div id="jobDetailsWrapper"
+             style="display: none;">
+
+
+            <!-- ========================================
+                 HEADER
+            ========================================= -->
+
+            <section class="job-details-header">
+
+                <div
+                    class="job-details-header-inner">
+
+
+                    <div
+                        id="companyLogo"
+                        class="large-company-logo">
+
+                        J
+
+                    </div>
+
+
+                    <div class="job-header-info">
+
+                        <h1 id="jobTitle">
+                            Job Title
+                        </h1>
+
+                        <p
+                            id="jobCompany"
+                            class="job-company">
+
+                            Company
+
+                        </p>
+
+
+                        <div
+                            class="job-header-meta">
+
+                            <span id="jobLocation">
+                                📍 Location
+                            </span>
+
+                            <span id="jobExperience">
+                                💼 Experience
+                            </span>
+
+                            <span id="jobSalary">
+                                💰 Salary
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================
+                 CONTENT
+            ========================================= -->
+
+            <section class="job-details-content">
+
+
+                <!-- ====================================
+                     DESCRIPTION
+                ===================================== -->
+
+                <article
+                    class="job-description-card">
+
+
+                    <div class="details-section">
+
+                        <h2>
+                            Job Description
+                        </h2>
+
+                        <p id="jobDescription">
+                            Job description will appear here.
+                        </p>
+
+                    </div>
+
+
+                    <div class="details-section">
+
+                        <h2>
+                            Required Skills
+                        </h2>
+
+                        <div
+                            id="skillsList"
+                            class="skills-list">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="details-section">
+
+                        <h2>
+                            About This Opportunity
+                        </h2>
+
+                        <p>
+                            This opportunity allows candidates
+                            to work with a professional team and
+                            develop their technical and
+                            problem-solving skills.
+                        </p>
+
+                    </div>
+
+
+                </article>
+
+
+                <!-- ====================================
+                     APPLY CARD
+                ===================================== -->
+
+                <aside
+                    class="job-apply-card">
+
+
+                    <h3>
+                        Job Overview
+                    </h3>
+
+
+                    <div class="job-info-item">
+
+                        <span class="job-info-label">
+                            Company
+                        </span>
+
+                        <span
+                            id="overviewCompany"
+                            class="job-info-value">
+
+                            -
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="job-info-item">
+
+                        <span class="job-info-label">
+                            Location
+                        </span>
+
+                        <span
+                            id="overviewLocation"
+                            class="job-info-value">
+
+                            -
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="job-info-item">
+
+                        <span class="job-info-label">
+                            Experience
+                        </span>
+
+                        <span
+                            id="overviewExperience"
+                            class="job-info-value">
+
+                            -
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="job-info-item">
+
+                        <span class="job-info-label">
+                            Salary
+                        </span>
+
+                        <span
+                            id="overviewSalary"
+                            class="job-info-value">
+
+                            -
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="job-info-item">
+
+                        <span class="job-info-label">
+                            Posted
+                        </span>
+
+                        <span
+                            id="overviewDate"
+                            class="job-info-value">
+
+                            -
+
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        id="applyNowBtn"
+                        class="apply-now-btn">
+
+                        Apply Now
+
+                    </button>
+
+
+                    <div
+                        id="loginMessage"
+                        class="login-message">
+
+                        Please login as a candidate
+                        before applying for this job.
+
+                    </div>
+
+                </aside>
+
+            </section>
+
+        </div>
+
+
+        <!-- ============================================
+             ERROR
+        ============================================= -->
+
+        <div
+            id="detailsError"
+            style="display: none;"
+            class="details-error">
+
+            <h2>
+                Job Not Found
+            </h2>
+
+            <p>
+                We couldn't find the job you're looking for.
+            </p>
+
+            <button
+                class="apply-now-btn"
+                id="errorBackBtn">
+
+                Browse Jobs
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================================================
+         JAVASCRIPT
+    ================================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="module" src="../js/job-details.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>JobConnect | Find Your Dream Job</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- =================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Job<span>Connect</span>
+        </div>
+
+        <nav class="nav-links">
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+            <a href="#featuredJobs">
+                Jobs
+            </a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="#howItWorks">
+                How It Works
+            </a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <button
+                id="loginBtn"
+                class="btn btn-outline">
+                Login
+            </button>
+
+            <button
+                id="registerBtn"
+                class="btn btn-primary">
+                Register
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         HERO SECTION
+    ================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <span>✦</span>
+
+                India's growing job community
+
+            </div>
+
+
+            <h1>
+
+                Find a job that
+
+                <span>
+                    fits your future.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Discover thousands of opportunities from
+                leading companies. Search, apply and take
+                the next step in your career.
+
+            </p>
+
+
+            <!-- SEARCH -->
+
+            <div class="hero-search">
+
+                <div class="search-field">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="jobSearch"
+                        placeholder="Job title, skills or company">
+
+                </div>
+
+
+                <div class="search-field">
+
+                    <span class="search-icon">
+                        📍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="locationSearch"
+                        placeholder="Location">
+
+                </div>
+
+
+                <button
+                    id="searchBtn"
+                    class="search-button">
+
+                    Search Jobs
+
+                </button>
+
+            </div>
+
+
+            <div class="popular-searches">
+
+                <span>
+                    Popular:
+                </span>
+
+                <button
+                    class="quick-search"
+                    data-search="Software Developer">
+                    Software Developer
+                </button>
+
+                <button
+                    class="quick-search"
+                    data-search="Java Developer">
+                    Java Developer
+                </button>
+
+                <button
+                    class="quick-search"
+                    data-search="MERN">
+                    MERN
+                </button>
+
+                <button
+                    class="quick-search"
+                    data-search="Python">
+                    Python
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="floating-card card-one">
+
+                <div class="floating-icon">
+                    💼
+                </div>
+
+                <div>
+
+                    <strong>
+                        10,000+
+                    </strong>
+
+                    <small>
+                        Active Jobs
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-main-card">
+
+                <div class="hero-card-top">
+
+                    <div class="company-circle">
+                        T
+                    </div>
+
+                    <span class="verified">
+                        ✓
+                    </span>
+
+                </div>
+
+                <h3>
+                    Frontend Developer
+                </h3>
+
+                <p>
+                    TechNova Solutions
+                </p>
+
+                <div class="job-meta">
+
+                    <span>
+                        📍 Hyderabad
+                    </span>
+
+                    <span>
+                        💰 6-10 LPA
+                    </span>
+
+                </div>
+
+                <div class="skill-row">
+
+                    <span>React</span>
+                    <span>JavaScript</span>
+                    <span>CSS</span>
+
+                </div>
+
+                <button
+                    id="heroJobBtn"
+                    class="card-button">
+
+                    View Job
+
+                </button>
+
+            </div>
+
+
+            <div class="floating-card card-two">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Hired!
+                    </strong>
+
+                    <small>
+                        Congratulations 🎉
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         STATS
+    ================================================== -->
+
+    <section class="stats">
+
+        <div class="stat-item">
+
+            <strong id="jobCount">
+                0
+            </strong>
+
+            <span>
+                Active Jobs
+            </span>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <strong>
+                500+
+            </strong>
+
+            <span>
+                Companies
+            </span>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <strong>
+                10K+
+            </strong>
+
+            <span>
+                Candidates
+            </span>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <strong>
+                95%
+            </strong>
+
+            <span>
+                Satisfaction
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         FEATURED JOBS
+    ================================================== -->
+
+    <section
+        class="featured-section"
+        id="featuredJobs">
+
+        <div class="section-header">
+
+            <div>
+
+                <p class="section-tag">
+                    OPPORTUNITIES
+                </p>
+
+                <h2>
+                    Featured Jobs
+                </h2>
+
+                <p>
+                    Explore some of the latest opportunities
+                    available on JobConnect.
+                </p>
+
+            </div>
+
+
+            <button
+                id="viewAllJobsBtn"
+                class="view-all-btn">
+
+                View All Jobs →
+
+            </button>
+
+        </div>
+
+
+        <!-- JOBS WILL BE INSERTED HERE -->
+
+        <div
+            id="featuredJobsContainer"
+            class="jobs-grid">
+
+            <div class="loading-card">
+
+                <div class="loader"></div>
+
+                <p>
+                    Loading latest jobs...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <p
+            id="jobMessage"
+            class="job-message">
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         CATEGORIES
+    ================================================== -->
+
+    <section
+        class="categories-section"
+        id="categories">
+
+        <div class="section-heading">
+
+            <p class="section-tag">
+                EXPLORE
+            </p>
+
+            <h2>
+                Popular Job Categories
+            </h2>
+
+            <p>
+                Find opportunities based on your interests
+                and skills.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <button
+                class="category-card"
+                data-category="Software">
+
+                <div class="category-icon">
+                    💻
+                </div>
+
+                <div>
+
+                    <h3>
+                        Software Development
+                    </h3>
+
+                    <p>
+                        2,500+ Jobs
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Data">
+
+                <div class="category-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h3>
+                        Data & Analytics
+                    </h3>
+
+                    <p>
+                        1,200+ Jobs
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Design">
+
+                <div class="category-icon">
+                    🎨
+                </div>
+
+                <div>
+
+                    <h3>
+                        Design
+                    </h3>
+
+                    <p>
+                        850+ Jobs
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Marketing">
+
+                <div class="category-icon">
+                    📣
+                </div>
+
+                <div>
+
+                    <h3>
+                        Marketing
+                    </h3>
+
+                    <p>
+                        700+ Jobs
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Finance">
+
+                <div class="category-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <h3>
+                        Finance
+                    </h3>
+
+                    <p>
+                        600+ Jobs
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="HR">
+
+                <div class="category-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h3>
+                        Human Resources
+                    </h3>
+
+                    <p>
+                        450+ Jobs
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         HOW IT WORKS
+    ================================================== -->
+
+    <section
+        class="how-section"
+        id="howItWorks">
+
+        <div class="section-heading">
+
+            <p class="section-tag">
+                SIMPLE PROCESS
+            </p>
+
+            <h2>
+                How JobConnect Works
+            </h2>
+
+            <p>
+                Start your job search in four simple steps.
+            </p>
+
+        </div>
+
+
+        <div class="steps-container">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <div class="step-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Search
+                </h3>
+
+                <p>
+                    Find jobs matching your skills,
+                    experience and location.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <div class="step-icon">
+                    📄
+                </div>
+
+                <h3>
+                    Apply
+                </h3>
+
+                <p>
+                    Submit your application and resume
+                    to suitable opportunities.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <div class="step-icon">
+                    📈
+                </div>
+
+                <h3>
+                    Track
+                </h3>
+
+                <p>
+                    Follow your application status
+                    from submission to interview.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <div class="step-icon">
+                    🎉
+                </div>
+
+                <h3>
+                    Get Hired
+                </h3>
+
+                <p>
+                    Connect with recruiters and land
+                    your next opportunity.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         RECRUITER CTA
+    ================================================== -->
+
+    <section class="recruiter-section">
+
+        <div class="recruiter-content">
+
+            <p class="section-tag">
+                FOR EMPLOYERS
+            </p>
+
+            <h2>
+                Looking for talented people?
+            </h2>
+
+            <p>
+                Post your job and connect with candidates
+                who are ready for their next opportunity.
+            </p>
+
+            <button
+                id="postJobBtn"
+                class="btn btn-white">
+
+                Post a Job →
+
+            </button>
+
+        </div>
+
+        <div class="recruiter-visual">
+            👥
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+                    Job<span>Connect</span>
+                </div>
+
+                <p>
+                    Connecting talented people with
+                    great opportunities.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    For Candidates
+                </h4>
+
+                <a href="#featuredJobs">
+                    Find Jobs
+                </a>
+
+                <a href="#categories">
+                    Job Categories
+                </a>
+
+                <a href="#">
+                    My Applications
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    For Recruiters
+                </h4>
+
+                <a href="#postJobBtn">
+                    Post a Job
+                </a>
+
+                <a href="#">
+                    Find Candidates
+                </a>
+
+                <a href="#">
+                    Recruiter Login
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <p>
+                    support@jobconnect.com
+                </p>
+
+                <p>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 JobConnect. All rights reserved.
+            </p>
+
+            <p>
+                Built with HTML • CSS • JavaScript • Axios • JSON Server
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+
+</html>

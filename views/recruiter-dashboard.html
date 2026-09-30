@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recruiter Dashboard | JobConnect</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+    <style>
+
+        /* =============================================
+           RECRUITER DASHBOARD
+        ============================================= */
+
+        .recruiter-page {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+
+        /* NAVBAR */
+
+        .recruiter-navbar {
+            height: 70px;
+
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e5e7eb;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+        }
+
+        .recruiter-logo {
+            font-size: 22px;
+            font-weight: 800;
+
+            color: #111827;
+        }
+
+        .recruiter-logo span {
+            color: #2563eb;
+        }
+
+        .recruiter-nav-right {
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .recruiter-welcome {
+            color: #475569;
+
+            font-size: 13px;
+        }
+
+        .recruiter-logout {
+            padding: 9px 15px;
+
+            border: 1px solid #fecaca;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #dc2626;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .recruiter-logout:hover {
+            background: #fef2f2;
+        }
+
+
+        /* MAIN CONTENT */
+
+        .recruiter-content {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 45px 0 80px;
+        }
+
+
+        /* HEADING */
+
+        .recruiter-heading {
+            margin-bottom: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .recruiter-heading h1 {
+            margin-bottom: 7px;
+
+            color: #111827;
+
+            font-size: 30px;
+        }
+
+        .recruiter-heading p {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        .post-job-btn {
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .post-job-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* PROFILE */
+
+        .recruiter-profile {
+            margin-bottom: 28px;
+
+            padding: 24px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+        .recruiter-avatar {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .recruiter-profile-info h2 {
+            margin-bottom: 4px;
+
+            color: #111827;
+
+            font-size: 18px;
+        }
+
+        .recruiter-profile-info p {
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        .recruiter-role {
+            display: inline-block;
+
+            margin-top: 7px;
+
+            padding: 4px 9px;
+
+            border-radius: 5px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+
+
+        /* STATISTICS */
+
+        .recruiter-stats {
+            margin-bottom: 35px;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .recruiter-stat-card {
+            padding: 22px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 10px;
+
+            transition: 0.2s;
+        }
+
+        .recruiter-stat-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(15, 23, 42, 0.06);
+        }
+
+        .recruiter-stat-icon {
+            margin-bottom: 12px;
+
+            font-size: 22px;
+        }
+
+        .recruiter-stat-card h3 {
+            margin-bottom: 4px;
+
+            color: #111827;
+
+            font-size: 26px;
+        }
+
+        .recruiter-stat-card p {
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+
+        /* JOB SECTION */
+
+        .recruiter-jobs-section {
+            padding: 28px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+        .recruiter-jobs-header {
+            margin-bottom: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+        .recruiter-jobs-header h2 {
+            color: #111827;
+
+            font-size: 20px;
+        }
+
+        .recruiter-jobs-count {
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        /* JOB CARDS */
+
+        .recruiter-job-list {
+            display: grid;
+
+            gap: 15px;
+        }
+
+        .recruiter-job-card {
+            padding: 20px;
+
+            display: grid;
+
+            grid-template-columns: 1fr auto;
+
+            gap: 20px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 10px;
+
+            transition: 0.2s;
+        }
+
+        .recruiter-job-card:hover {
+            border-color: #bfdbfe;
+
+            box-shadow:
+                0 8px 20px
+                rgba(37, 99, 235, 0.06);
+        }
+
+        .recruiter-job-main h3 {
+            margin-bottom: 5px;
+
+            color: #111827;
+
+            font-size: 16px;
+        }
+
+        .recruiter-job-company {
+            margin-bottom: 13px;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        .recruiter-job-meta {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+
+        /* ACTION BUTTONS */
+
+        .recruiter-job-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+        }
+
+        .job-action-btn {
+            padding: 8px 11px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .applicants-btn {
+            background: #eff6ff;
+
+            color: #2563eb;
+        }
+
+        .applicants-btn:hover {
+            background: #dbeafe;
+        }
+
+        .edit-job-btn {
+            background: #f0fdf4;
+
+            color: #16a34a;
+        }
+
+        .edit-job-btn:hover {
+            background: #dcfce7;
+        }
+
+        .delete-job-btn {
+            background: #fef2f2;
+
+            color: #dc2626;
+        }
+
+        .delete-job-btn:hover {
+            background: #fee2e2;
+        }
+
+
+        /* EMPTY */
+
+        .recruiter-empty {
+            padding: 55px 20px;
+
+            text-align: center;
+        }
+
+        .recruiter-empty-icon {
+            margin-bottom: 15px;
+
+            font-size: 45px;
+        }
+
+        .recruiter-empty h3 {
+            margin-bottom: 7px;
+
+            color: #111827;
+
+            font-size: 17px;
+        }
+
+        .recruiter-empty p {
+            margin-bottom: 20px;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        /* LOADING */
+
+        .recruiter-loading {
+            padding: 60px;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .recruiter-content {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .recruiter-stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .recruiter-navbar {
+                padding: 0 5%;
+            }
+
+            .recruiter-welcome {
+                display: none;
+            }
+
+            .recruiter-heading {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .recruiter-heading h1 {
+                font-size: 25px;
+            }
+
+            .recruiter-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-job-card {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-job-actions {
+                justify-content: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="recruiter-page">
+
+
+    <!-- =============================================
+         NAVBAR
+    ============================================== -->
+
+    <header class="recruiter-navbar">
+
+        <div class="recruiter-logo">
+
+            Job<span>Connect</span>
+
+        </div>
+
+
+        <div class="recruiter-nav-right">
+
+            <span
+                id="recruiterWelcome"
+                class="recruiter-welcome">
+
+                Welcome!
+
+            </span>
+
+
+            <button
+                id="recruiterLogoutBtn"
+                class="recruiter-logout">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =============================================
+         CONTENT
+    ============================================== -->
+
+    <main class="recruiter-content">
+
+
+        <!-- HEADING -->
+
+        <section class="recruiter-heading">
+
+            <div>
+
+                <h1>
+                    Recruiter Dashboard
+                </h1>
+
+                <p>
+                    Manage your job postings and
+                    review candidate applications.
+                </p>
+
+            </div>
+
+
+            <button
+                id="postNewJobBtn"
+                class="post-job-btn">
+
+                + Post New Job
+
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             PROFILE
+        ========================================== -->
+
+        <section class="recruiter-profile">
+
+            <div
+                id="recruiterAvatar"
+                class="recruiter-avatar">
+
+                R
+
+            </div>
+
+
+            <div class="recruiter-profile-info">
+
+                <h2 id="recruiterName">
+                    Recruiter
+                </h2>
+
+                <p id="recruiterEmail">
+                    recruiter@email.com
+                </p>
+
+                <span class="recruiter-role">
+                    Recruiter
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             STATISTICS
+        ========================================== -->
+
+        <section class="recruiter-stats">
+
+
+            <div class="recruiter-stat-card">
+
+                <div class="recruiter-stat-icon">
+                    💼
+                </div>
+
+                <h3 id="totalPostedJobs">
+                    0
+                </h3>
+
+                <p>
+                    Jobs Posted
+                </p>
+
+            </div>
+
+
+            <div class="recruiter-stat-card">
+
+                <div class="recruiter-stat-icon">
+                    👥
+                </div>
+
+                <h3 id="totalApplicants">
+                    0
+                </h3>
+
+                <p>
+                    Total Applicants
+                </p>
+
+            </div>
+
+
+            <div class="recruiter-stat-card">
+
+                <div class="recruiter-stat-icon">
+                    ⭐
+                </div>
+
+                <h3 id="totalShortlisted">
+                    0
+                </h3>
+
+                <p>
+                    Shortlisted
+                </p>
+
+            </div>
+
+
+            <div class="recruiter-stat-card">
+
+                <div class="recruiter-stat-icon">
+                    🎉
+                </div>
+
+                <h3 id="totalSelected">
+                    0
+                </h3>
+
+                <p>
+                    Selected
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             JOBS
+        ========================================== -->
+
+        <section class="recruiter-jobs-section">
+
+
+            <div class="recruiter-jobs-header">
+
+                <h2>
+                    My Job Postings
+                </h2>
+
+                <span
+                    id="recruiterJobsCount"
+                    class="recruiter-jobs-count">
+
+                    Loading...
+
+                </span>
+
+            </div>
+
+
+            <div id="recruiterJobsContainer">
+
+                <div class="recruiter-loading">
+
+                    Loading your job postings...
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- AXIOS -->
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="module" src="../js/recruiter-dashboard.js"></script>
+
+
+</body>
+
+</html>

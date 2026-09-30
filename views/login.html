@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Login | JobConnect</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+    <style>
+
+        /* Authentication page */
+
+        .auth-page {
+            min-height: calc(100vh - 74px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 60px 7%;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(147, 197, 253, 0.35),
+                    transparent 30%
+                ),
+                #eff6ff;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 1000px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 60px rgba(15, 23, 42, 0.12);
+        }
+
+        .auth-info {
+            padding: 55px;
+
+            background: #1d4ed8;
+
+            color: #ffffff;
+        }
+
+        .auth-info .section-tag {
+            color: #bfdbfe;
+        }
+
+        .auth-info h1 {
+            margin: 15px 0 20px;
+
+            font-size: 42px;
+
+            line-height: 1.1;
+        }
+
+        .auth-info > p {
+            color: #dbeafe;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .auth-feature {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+        }
+
+        .auth-feature span {
+            width: 25px;
+            height: 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.15);
+
+            color: #ffffff;
+        }
+
+        .auth-feature p {
+            color: #dbeafe;
+
+            font-size: 13px;
+        }
+
+        .auth-card {
+            padding: 55px;
+        }
+
+        .auth-heading {
+            margin-bottom: 30px;
+        }
+
+        .auth-heading h2 {
+            margin-bottom: 5px;
+
+            color: #111827;
+
+            font-size: 30px;
+        }
+
+        .auth-heading p {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #374151;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            color: #111827;
+
+            font-size: 14px;
+
+            background: #ffffff;
+
+            transition: 0.2s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px rgba(
+                    37,
+                    99,
+                    235,
+                    0.1
+                );
+        }
+
+        .remember-row {
+            margin-bottom: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            font-size: 12px;
+        }
+
+        .remember-row label {
+            display: flex;
+            align-items: center;
+
+            gap: 7px;
+
+            color: #64748b;
+        }
+
+        .remember-row input {
+            accent-color: #2563eb;
+        }
+
+        .remember-row a {
+            color: #2563eb;
+
+            font-weight: 600;
+        }
+
+        .auth-button {
+            width: 100%;
+
+            padding: 13px;
+        }
+
+        .form-message {
+            min-height: 20px;
+
+            margin-top: 12px;
+
+            text-align: center;
+
+            font-size: 12px;
+        }
+
+        .auth-footer {
+            margin-top: 25px;
+            padding-top: 22px;
+
+            border-top: 1px solid #eef2f7;
+
+            text-align: center;
+        }
+
+        .auth-footer p {
+            display: inline;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        .auth-footer a {
+            margin-left: 5px;
+
+            color: #2563eb;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        @media (max-width: 750px) {
+
+            .auth-container {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-info {
+                padding: 40px 30px;
+            }
+
+            .auth-info h1 {
+                font-size: 32px;
+            }
+
+            .auth-card {
+                padding: 40px 30px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Job<span>Connect</span>
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#featuredJobs">
+                Jobs
+            </a>
+
+            <a href="index.html#categories">
+                Categories
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button
+                class="btn btn-outline"
+                onclick="window.location.href='register.html'">
+
+                Register
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+
+            <!-- LEFT -->
+
+            <section class="auth-info">
+
+                <p class="section-tag">
+                    WELCOME BACK
+                </p>
+
+
+                <h1>
+                    Your next opportunity
+                    starts here.
+                </h1>
+
+
+                <p>
+                    Login to JobConnect and discover
+                    opportunities that match your skills,
+                    experience and career goals.
+                </p>
+
+
+                <div class="auth-feature">
+
+                    <span>✓</span>
+
+                    <p>
+                        Search thousands of job opportunities
+                    </p>
+
+                </div>
+
+
+                <div class="auth-feature">
+
+                    <span>✓</span>
+
+                    <p>
+                        Apply for jobs with ease
+                    </p>
+
+                </div>
+
+
+                <div class="auth-feature">
+
+                    <span>✓</span>
+
+                    <p>
+                        Track your applications
+                    </p>
+
+                </div>
+
+
+                <div class="auth-feature">
+
+                    <span>✓</span>
+
+                    <p>
+                        Connect with recruiters
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT -->
+
+            <section class="auth-card">
+
+                <div class="auth-heading">
+
+                    <h2>
+                        Login
+                    </h2>
+
+                    <p>
+                        Enter your account details
+                    </p>
+
+                </div>
+
+
+                <form id="loginForm">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- REMEMBER -->
+
+                    <div class="remember-row">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            Remember me
+
+                        </label>
+
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary auth-button">
+
+                        Login
+
+                    </button>
+
+
+                    <!-- MESSAGE -->
+
+                    <p
+                        id="loginMessage"
+                        class="form-message">
+                    </p>
+
+
+                </form>
+
+
+                <!-- REGISTER -->
+
+                <div class="auth-footer">
+
+                    <p>
+                        Don't have an account?
+                    </p>
+
+                    <a href="register.html">
+                        Create an account
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../js/login.js"></script>
+
+
+
+</body>
+
+</html>

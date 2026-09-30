@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Post Job | JobConnect</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+    <style>
+
+        /* =================================================
+           POST JOB PAGE
+        ================================================= */
+
+        .post-job-page {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .post-job-navbar {
+            height: 70px;
+
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+
+        .post-job-logo {
+            color: #111827;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+
+        .post-job-logo span {
+            color: #2563eb;
+        }
+
+
+        .back-dashboard-btn {
+            padding: 9px 14px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #475569;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .back-dashboard-btn:hover {
+            background: #f8fafc;
+        }
+
+
+        /* =================================================
+           CONTENT
+        ================================================= */
+
+        .post-job-content {
+            max-width: 850px;
+
+            margin: auto;
+
+            padding: 45px 0 80px;
+        }
+
+
+        .post-job-heading {
+            margin-bottom: 25px;
+        }
+
+
+        .post-job-heading h1 {
+            margin-bottom: 7px;
+
+            color: #111827;
+
+            font-size: 30px;
+        }
+
+
+        .post-job-heading p {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           FORM CARD
+        ================================================= */
+
+        .job-form-card {
+            padding: 32px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+
+        .form-section:last-of-type {
+            margin-bottom: 0;
+        }
+
+
+        .form-section-title {
+            margin-bottom: 18px;
+
+            padding-bottom: 10px;
+
+            border-bottom: 1px solid #eef2f7;
+
+            color: #111827;
+
+            font-size: 16px;
+        }
+
+
+        /* =================================================
+           FORM GRID
+        ================================================= */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+
+        .form-group label {
+            margin-bottom: 7px;
+
+            color: #374151;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+        .required {
+            color: #ef4444;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 11px 12px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background: #ffffff;
+
+            color: #334155;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            transition: 0.2s;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(37, 99, 235, 0.08);
+
+        }
+
+
+        .form-group textarea {
+
+            min-height: 150px;
+
+            resize: vertical;
+
+            line-height: 1.6;
+        }
+
+
+        .form-help {
+
+            margin-top: 5px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+
+        }
+
+
+        /* =================================================
+           SKILLS
+        ================================================= */
+
+        .skills-input-area {
+
+            display: flex;
+
+            gap: 8px;
+
+        }
+
+
+        .skills-input-area input {
+
+            flex: 1;
+
+        }
+
+
+        .add-skill-btn {
+
+            padding: 0 15px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .add-skill-btn:hover {
+
+            background: #dbeafe;
+
+        }
+
+
+        .skills-list {
+
+            margin-top: 12px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+        }
+
+
+        .skill-item {
+
+            padding: 7px 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            border-radius: 6px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+        }
+
+
+        .remove-skill {
+
+            width: 17px;
+            height: 17px;
+
+            padding: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #dbeafe;
+
+            color: #2563eb;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+        }
+
+
+        .remove-skill:hover {
+
+            background: #bfdbfe;
+
+        }
+
+
+        /* =================================================
+           FORM ACTIONS
+        ================================================= */
+
+        .form-actions {
+
+            margin-top: 32px;
+
+            padding-top: 22px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 10px;
+
+            border-top: 1px solid #eef2f7;
+
+        }
+
+
+        .cancel-btn {
+
+            padding: 11px 18px;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #475569;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .submit-job-btn {
+
+            padding: 11px 20px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .submit-job-btn:hover {
+
+            background: #1d4ed8;
+
+        }
+
+
+        .submit-job-btn:disabled {
+
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        /* =================================================
+           MESSAGE
+        ================================================= */
+
+        .form-message {
+
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 12px 14px;
+
+            border-radius: 7px;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .form-message.error {
+
+            background: #fef2f2;
+
+            color: #dc2626;
+
+        }
+
+
+        .form-message.success {
+
+            background: #f0fdf4;
+
+            color: #15803d;
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 650px) {
+
+            .post-job-content {
+
+                padding-left: 5%;
+
+                padding-right: 5%;
+
+            }
+
+
+            .job-form-card {
+
+                padding: 22px;
+
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .form-group.full-width {
+
+                grid-column: auto;
+
+            }
+
+
+            .post-job-heading h1 {
+
+                font-size: 25px;
+
+            }
+
+
+            .form-actions {
+
+                flex-direction: column-reverse;
+
+                align-items: stretch;
+
+            }
+
+
+            .cancel-btn,
+            .submit-job-btn {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="post-job-page">
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="post-job-navbar">
+
+
+        <div class="post-job-logo">
+
+            Job<span>Connect</span>
+
+        </div>
+
+
+        <button
+            id="backDashboardBtn"
+            class="back-dashboard-btn">
+
+            ← Dashboard
+
+        </button>
+
+
+    </header>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="post-job-content">
+
+
+        <!-- HEADING -->
+
+        <section class="post-job-heading">
+
+            <h1 id="pageTitle">
+
+                Post a New Job
+
+            </h1>
+
+
+            <p id="pageSubtitle">
+
+                Create a job posting and start
+                receiving applications.
+
+            </p>
+
+        </section>
+
+
+        <!-- FORM -->
+
+        <form
+            id="jobForm"
+            class="job-form-card">
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="formMessage"
+                class="form-message">
+
+            </div>
+
+
+            <!-- =================================================
+                 BASIC INFORMATION
+            ================================================== -->
+
+            <section class="form-section">
+
+
+                <h2 class="form-section-title">
+
+                    Basic Information
+
+                </h2>
+
+
+                <div class="form-grid">
+
+
+                    <!-- JOB TITLE -->
+
+                    <div class="form-group full-width">
+
+                        <label for="jobTitle">
+
+                            Job Title
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="jobTitle"
+                            placeholder="e.g. Frontend Developer"
+                            required>
+
+
+                    </div>
+
+
+                    <!-- COMPANY -->
+
+                    <div class="form-group">
+
+                        <label for="company">
+
+                            Company
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="company"
+                            placeholder="e.g. TechNova Solutions"
+                            required>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-group">
+
+                        <label for="location">
+
+                            Location
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="e.g. Hyderabad"
+                            required>
+
+                    </div>
+
+
+                    <!-- SALARY -->
+
+                    <div class="form-group">
+
+                        <label for="salary">
+
+                            Salary
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="salary"
+                            placeholder="e.g. 6-10 LPA"
+                            required>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="form-group">
+
+                        <label for="experience">
+
+                            Experience
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <select
+                            id="experience"
+                            required>
+
+                            <option value="">
+                                Select Experience
+                            </option>
+
+                            <option value="0-2 Years">
+                                0-2 Years
+                            </option>
+
+                            <option value="1-3 Years">
+                                1-3 Years
+                            </option>
+
+                            <option value="3-5 Years">
+                                3-5 Years
+                            </option>
+
+                            <option value="5+ Years">
+                                5+ Years
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SKILLS
+            ================================================== -->
+
+            <section class="form-section">
+
+
+                <h2 class="form-section-title">
+
+                    Required Skills
+
+                </h2>
+
+
+                <div class="form-group">
+
+
+                    <label for="skillInput">
+
+                        Add Skills
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <div class="skills-input-area">
+
+
+                        <input
+                            type="text"
+                            id="skillInput"
+                            placeholder="e.g. JavaScript">
+
+
+                        <button
+                            type="button"
+                            id="addSkillBtn"
+                            class="add-skill-btn">
+
+                            + Add
+
+                        </button>
+
+
+                    </div>
+
+
+                    <p class="form-help">
+
+                        Add each skill separately.
+
+                    </p>
+
+
+                    <div
+                        id="skillsList"
+                        class="skills-list">
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DESCRIPTION
+            ================================================== -->
+
+            <section class="form-section">
+
+
+                <h2 class="form-section-title">
+
+                    Job Description
+
+                </h2>
+
+
+                <div class="form-group">
+
+
+                    <label for="description">
+
+                        Description
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <textarea
+                        id="description"
+                        placeholder="Describe the role, responsibilities and requirements..."
+                        required>
+                    </textarea>
+
+
+                    <p class="form-help">
+
+                        Provide enough information for
+                        candidates to understand the role.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ACTIONS
+            ================================================== -->
+
+            <div class="form-actions">
+
+
+                <button
+                    type="button"
+                    id="cancelBtn"
+                    class="cancel-btn">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    id="submitJobBtn"
+                    class="submit-job-btn">
+
+                    Publish Job
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- =================================================
+     AXIOS
+================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+</script>
+
+
+<!-- =================================================
+     JAVASCRIPT
+================================================== -->
+
+<script
+    type="module"
+    src="../js/post-job.js">
+</script>
+
+
+</body>
+
+</html>

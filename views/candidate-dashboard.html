@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Candidate Dashboard | JobConnect</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+    <style>
+
+        /* =================================================
+           DASHBOARD
+        ================================================= */
+
+        .dashboard-page {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+
+        /* =================================================
+           DASHBOARD NAVBAR
+        ================================================= */
+
+        .dashboard-navbar {
+            height: 70px;
+
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e5e7eb;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .dashboard-logo {
+            color: #111827;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .dashboard-logo span {
+            color: #2563eb;
+        }
+
+
+        .dashboard-nav-right {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+
+        .welcome-user {
+            color: #475569;
+
+            font-size: 13px;
+        }
+
+
+        .logout-btn {
+            padding: 9px 15px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #ef4444;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background: #fef2f2;
+        }
+
+
+        /* =================================================
+           DASHBOARD CONTENT
+        ================================================= */
+
+        .dashboard-content {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 45px 0 80px;
+        }
+
+
+        .dashboard-heading {
+            margin-bottom: 30px;
+        }
+
+
+        .dashboard-heading h1 {
+            margin-bottom: 8px;
+
+            color: #111827;
+
+            font-size: 30px;
+        }
+
+
+        .dashboard-heading p {
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =================================================
+           PROFILE CARD
+        ================================================= */
+
+        .profile-card {
+            margin-bottom: 28px;
+
+            padding: 25px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+
+        .profile-avatar {
+            width: 58px;
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+
+        .profile-info h2 {
+            margin-bottom: 5px;
+
+            color: #111827;
+
+            font-size: 18px;
+        }
+
+
+        .profile-info p {
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        .profile-role {
+            margin-top: 7px;
+
+            display: inline-block;
+
+            padding: 4px 9px;
+
+            border-radius: 5px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =================================================
+           STATISTICS
+        ================================================= */
+
+        .dashboard-stats {
+            margin-bottom: 35px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .stat-card {
+            padding: 22px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 10px;
+        }
+
+
+        .stat-icon {
+            margin-bottom: 12px;
+
+            font-size: 22px;
+        }
+
+
+        .stat-card h3 {
+            margin-bottom: 5px;
+
+            color: #111827;
+
+            font-size: 25px;
+        }
+
+
+        .stat-card p {
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+
+        /* =================================================
+           APPLICATIONS SECTION
+        ================================================= */
+
+        .applications-section {
+            padding: 28px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+
+        .applications-header {
+            margin-bottom: 22px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .applications-header h2 {
+            color: #111827;
+
+            font-size: 20px;
+        }
+
+
+        .browse-jobs-btn {
+            padding: 10px 16px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .browse-jobs-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =================================================
+           APPLICATION TABLE
+        ================================================= */
+
+        .applications-table-wrapper {
+            overflow-x: auto;
+        }
+
+
+        .applications-table {
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+
+        .applications-table th {
+            padding: 13px;
+
+            text-align: left;
+
+            background: #f8fafc;
+
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+        }
+
+
+        .applications-table td {
+            padding: 16px 13px;
+
+            border-bottom: 1px solid #eef2f7;
+
+            color: #475569;
+
+            font-size: 12px;
+
+            white-space: nowrap;
+        }
+
+
+        .applications-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+
+        .job-name {
+            color: #111827;
+
+            font-weight: 700;
+        }
+
+
+        .company-name {
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+
+        /* =================================================
+           STATUS
+        ================================================= */
+
+        .status-badge {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        .status-applied {
+            background: #eff6ff;
+
+            color: #2563eb;
+        }
+
+
+        .status-review {
+            background: #fff7ed;
+
+            color: #ea580c;
+        }
+
+
+        .status-shortlisted {
+            background: #fefce8;
+
+            color: #ca8a04;
+        }
+
+
+        .status-interview {
+            background: #f5f3ff;
+
+            color: #7c3aed;
+        }
+
+
+        .status-selected {
+            background: #f0fdf4;
+
+            color: #16a34a;
+        }
+
+
+        .status-rejected {
+            background: #fef2f2;
+
+            color: #dc2626;
+        }
+
+
+        /* =================================================
+           EMPTY STATE
+        ================================================= */
+
+        .empty-applications {
+            padding: 55px 20px;
+
+            text-align: center;
+        }
+
+
+        .empty-applications-icon {
+            margin-bottom: 15px;
+
+            font-size: 42px;
+        }
+
+
+        .empty-applications h3 {
+            margin-bottom: 7px;
+
+            color: #111827;
+
+            font-size: 17px;
+        }
+
+
+        .empty-applications p {
+            margin-bottom: 20px;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        /* =================================================
+           LOADING
+        ================================================= */
+
+        .dashboard-loading {
+            padding: 60px;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 900px) {
+
+            .dashboard-content {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .dashboard-stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .dashboard-navbar {
+                padding: 0 5%;
+            }
+
+            .welcome-user {
+                display: none;
+            }
+
+            .dashboard-heading h1 {
+                font-size: 25px;
+            }
+
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                align-items: flex-start;
+            }
+
+            .applications-section {
+                padding: 18px;
+            }
+
+            .applications-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="dashboard-page">
+
+
+        <!-- =============================================
+             NAVBAR
+        ============================================== -->
+
+        <header class="dashboard-navbar">
+
+
+            <div class="dashboard-logo">
+
+                Job<span>Connect</span>
+
+            </div>
+
+
+            <div class="dashboard-nav-right">
+
+
+                <span
+                    id="welcomeUser"
+                    class="welcome-user">
+
+                    Welcome!
+
+                </span>
+
+
+                <button
+                    id="logoutBtn"
+                    class="logout-btn">
+
+                    Logout
+
+                </button>
+
+
+            </div>
+
+
+        </header>
+
+
+        <!-- =============================================
+             MAIN CONTENT
+        ============================================== -->
+
+        <main class="dashboard-content">
+
+
+            <!-- =========================================
+                 HEADING
+            ========================================== -->
+
+            <section
+                class="dashboard-heading">
+
+                <h1>
+                    Candidate Dashboard
+                </h1>
+
+                <p>
+                    Track your job applications
+                    and discover new opportunities.
+                </p>
+
+            </section>
+
+
+            <!-- =========================================
+                 PROFILE
+            ========================================== -->
+
+            <section
+                class="profile-card">
+
+
+                <div
+                    id="profileAvatar"
+                    class="profile-avatar">
+
+                    U
+
+                </div>
+
+
+                <div class="profile-info">
+
+                    <h2 id="profileName">
+                        Candidate
+                    </h2>
+
+                    <p id="profileEmail">
+                        candidate@email.com
+                    </p>
+
+                    <span class="profile-role">
+                        Candidate
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =========================================
+                 STATISTICS
+            ========================================== -->
+
+            <section
+                class="dashboard-stats">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                    <h3 id="totalApplications">
+                        0
+                    </h3>
+
+                    <p>
+                        Total Applications
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🔎
+                    </div>
+
+                    <h3 id="reviewApplications">
+                        0
+                    </h3>
+
+                    <p>
+                        Under Review
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⭐
+                    </div>
+
+                    <h3 id="shortlistedApplications">
+                        0
+                    </h3>
+
+                    <p>
+                        Shortlisted
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🎉
+                    </div>
+
+                    <h3 id="selectedApplications">
+                        0
+                    </h3>
+
+                    <p>
+                        Selected
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =========================================
+                 APPLICATIONS
+            ========================================== -->
+
+            <section
+                class="applications-section">
+
+
+                <div
+                    class="applications-header">
+
+
+                    <h2>
+                        My Applications
+                    </h2>
+
+
+                    <button
+                        id="browseJobsBtn"
+                        class="browse-jobs-btn">
+
+                        + Browse Jobs
+
+                    </button>
+
+
+                </div>
+
+
+                <div
+                    id="applicationsContainer">
+
+                    <div
+                        class="dashboard-loading">
+
+                        Loading your applications...
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- ================================================
+         AXIOS
+    ================================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../js/candidate-dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - JobConnect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            Job<span>Connect</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="index.html#categories">Categories</a>
+        </div>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">
+                Login
+            </a>
+        </div>
+
+    </nav>
+
+
+    <!-- ================= REGISTER PAGE ================= -->
+
+    <main class="register-page">
+
+        <div class="register-box">
+
+            <!-- LEFT SIDE -->
+
+            <section class="register-left">
+
+                <div class="register-left-small">
+                    JOIN JOBCONNECT
+                </div>
+
+                <h1>
+                    Start your career journey today.
+                </h1>
+
+                <p>
+                    Create your JobConnect account and discover
+                    opportunities that match your skills and career goals.
+                </p>
+
+
+                <div class="benefits">
+
+                    <div class="benefit">
+                        <div class="benefit-icon">✓</div>
+
+                        <span>
+                            Discover thousands of job opportunities
+                        </span>
+                    </div>
+
+
+                    <div class="benefit">
+                        <div class="benefit-icon">✓</div>
+
+                        <span>
+                            Apply to jobs with ease
+                        </span>
+                    </div>
+
+
+                    <div class="benefit">
+                        <div class="benefit-icon">✓</div>
+
+                        <span>
+                            Track your applications
+                        </span>
+                    </div>
+
+
+                    <div class="benefit">
+                        <div class="benefit-icon">✓</div>
+
+                        <span>
+                            Recruit talented candidates
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT SIDE -->
+
+            <section class="register-right">
+
+                <h2>
+                    Create Account
+                </h2>
+
+                <p class="register-description">
+                    Enter your details to get started
+                </p>
+
+
+                <!-- REGISTER FORM -->
+
+                <form id="registerForm">
+
+                    <!-- Full Name -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="Enter your full name"
+                        >
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                        >
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create a password"
+                        >
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm your password"
+                        >
+
+                    </div>
+
+
+                    <!-- Role -->
+
+                    <div class="role-title">
+                        Select Account Type
+                    </div>
+
+                    <div class="role-options">
+
+                        <label class="role-option">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="candidate"
+                            >
+
+                            Candidate
+
+                            <span>
+                                Find jobs and apply for opportunities
+                            </span>
+
+                        </label>
+
+
+                        <label class="role-option">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="recruiter"
+                            >
+
+                            Recruiter
+
+                            <span>
+                                Post jobs and find talented candidates
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Terms -->
+
+                    <div class="terms">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                        >
+
+                        <label for="terms">
+                            I agree to the terms and conditions
+                        </label>
+
+                    </div>
+
+
+                    <!-- Message -->
+
+                    <p id="registerMessage"></p>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        id="registerButton"
+                        class="register-button"
+                    >
+                        Create Account
+                    </button>
+
+                </form>
+
+
+                <!-- Login -->
+
+                <div class="login-link">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="module" src="../js/register.js"></script>
+
+</body>
+</html>
